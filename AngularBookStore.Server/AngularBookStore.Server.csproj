@@ -7,15 +7,16 @@
 		<SpaRoot>..\angularbookstore.client\</SpaRoot>
 		<SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
 		<SpaProxyServerUrl>https://localhost:4200</SpaProxyServerUrl>
+		<SelfContained>false</SelfContained>
 	</PropertyGroup>
 
-	<!-- Ejecuta los comandos de construcción de Angular antes de la publicación -->
+	
 	<Target Name="BuildAngular" BeforeTargets="Publish">
 		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
 		<Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --configuration production" />
 	</Target>
 
-	<!-- Copia los archivos construidos de Angular a la carpeta uploads después de construir -->
+
 	<Target Name="CopyAngularFiles" AfterTargets="Build">
 		<ItemGroup>
 			<DistFiles Include="$(SpaRoot)dist\bok-handel\browser\**\*" />
@@ -24,10 +25,10 @@
 	</Target>
 
 	<ItemGroup>
-		<Compile Remove="wwwroot\uploads\**" />
-		<Content Remove="wwwroot\uploads\**" />
-		<EmbeddedResource Remove="wwwroot\uploads\**" />
-		<None Remove="wwwroot\uploads\**" />
+		<Compile Remove="wwwroot\uuploads\**" />
+		<Content Remove="wwwroot\uuploads\**" />
+		<EmbeddedResource Remove="wwwroot\uuploads\**" />
+		<None Remove="wwwroot\uuploads\**" />
 	</ItemGroup>
 
 	<ItemGroup>

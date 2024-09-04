@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("NewPolicy", builder =>
     {
-        builder.WithOrigins("http://localhost:4200") 
+        builder.WithOrigins("https://bookstorelear23.netlify.app/") 
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
@@ -54,6 +54,7 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 
+app.UseCors("NewPolicy");
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images")),
@@ -63,10 +64,12 @@ app.UseStaticFiles(new StaticFileOptions
 });
 
 
-app.UseCors("NewPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+
+
+//http://localhost:4200
