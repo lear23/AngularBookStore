@@ -1,0 +1,28 @@
+
+
+  <div class="container">
+    <h1>Mina citat</h1>
+    
+    <h2>Quotes</h2>
+    <ul class="list-group">
+      <li *ngFor="let quote of quotes" class="list-group-item p-4 bg-light">
+        <strong>{{ quote.text }}</strong> - {{ quote.author }}
+        <button class="btn btn-danger btn-sm float-right" (click)="deleteQuote(quote.id)">Radera</button>
+      </li>
+    </ul>
+  
+    <h2>Lägg till nytt citat</h2>
+    <form (ngSubmit)="addQuote()">
+      <div class="form-group">
+          <label for="text">Citat:</label>
+          <input [(ngModel)]="newQuote.text" id="text" name="text" class="form-control" required>
+      </div>
+      <div class="form-group">
+          <label for="author">Författare:</label>
+          <input [(ngModel)]="newQuote.author" id="author" name="author" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">Lägg till citat</button>
+  </form>
+  
+  </div>
+  

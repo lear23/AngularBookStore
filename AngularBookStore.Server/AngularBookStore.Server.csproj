@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<SpaRoot>..\angularbookstore.client\</SpaRoot>
+		<SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
+		<SpaProxyServerUrl>https://localhost:4200</SpaProxyServerUrl>
+	</PropertyGroup>
+
+	<!-- Ejecuta los comandos de construcción de Angular antes de la publicación -->
+	<Target Name="BuildAngular" BeforeTargets="Publish">
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --configuration production" />
+	</Target>
+
+	<!-- Copia los archivos construidos de Angular a la carpeta uploads después de construir -->
+	<Target Name="CopyAngularFiles" AfterTargets="Build">
+		<ItemGroup>
+			<DistFiles Include="$(SpaRoot)dist\bok-handel\browser\**\*" />
+		</ItemGroup>
+		<Copy SourceFiles="@(DistFiles)" DestinationFolder="$(MSBuildProjectDirectory)\wwwroot\uploads" />
+	</Target>
+
+	<ItemGroup>
+		<Compile Remove="wwwroot\uploads\**" />
+		<Content Remove="wwwroot\uploads\**" />
+		<EmbeddedResource Remove="wwwroot\uploads\**" />
+		<None Remove="wwwroot\uploads\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.SpaProxy">
+			<Version>8.*-*</Version>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\angularbookstore.client\angularbookstore.client.esproj">
+			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+		</ProjectReference>
+		<ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+	</ItemGroup>
+
+</Project>

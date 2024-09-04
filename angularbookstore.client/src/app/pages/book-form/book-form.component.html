@@ -1,0 +1,37 @@
+
+   <div class="container d-flex justify-content-center align-items-center">
+    <form class="container-form" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <div class="form-group mb-3">
+        <label class="black" for="title">Title</label>
+        <input id="title" formControlName="title" class="form-control" />
+        <div *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched">
+          <small class="text-danger">Title is required</small>
+        </div>
+      </div>
+      
+      <div class="form-group mb-3">
+        <label class="black" for="author">Author</label>
+        <input id="author" formControlName="author" class="form-control" />
+      </div>
+      
+      <div class="form-group mb-3">
+        <label class="black" for="description">Description</label>
+        <textarea id="description" formControlName="description" class="form-control"></textarea>
+        <div *ngIf="bookForm.get('description')?.invalid && bookForm.get('description')?.touched">
+          <small class="text-danger">Description is required</small>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="black" for="publicationDate">Publication Date</label>
+        <input id="publicationDate" formControlName="publicationDate" type="date" class="form-control" />
+      </div>
+<!--   
+      <div class="form-group mb-3">
+        <label for="imageFile">Image</label>
+        <input id="imageFile" type="file" (change)="onFileChange($event)" class="form-control" />
+      </div> -->
+
+      <button type="submit" class="btn btn-primary" [disabled]="bookForm.invalid">Create Book</button>
+    </form>
+  </div>
+  

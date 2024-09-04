@@ -1,0 +1,18 @@
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+
+.background-container {
+    height: 100vh; 
+    background-image: linear-gradient(to bottom, #6366F1 0%, #5E62E6 25%, #565973 50%, #5E62E6 75%, white 100%);
+    background-size: cover; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

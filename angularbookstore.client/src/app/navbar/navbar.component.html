@@ -1,0 +1,61 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark p-4 bg-dark mb-4">
+    
+    <button id="abrir" class="open-menu d-lg-none" (click)="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="d-flex w-100 justify-content-between align-items-center">
+      
+      <a class="navbar-brand" href="home">BookStore</a>
+      
+      <div class="navbar-collapse d-none d-lg-flex">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="btn btn-primary" href="quote">Mina Citat</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary ms-2" href="book-form">
+              <i class="fa-solid fa-book"></i> Lägga till en bok
+            </a>
+          </li>
+        </ul>
+       
+        <div class="ms-auto d-flex align-items-center">          
+            <a class="btn btn-danger " href="home" (click)="signOut()">Sign Out</a>         
+          <div id="theme-switch" class="btn-switch ms-3">
+            <label class="dark-toogle">Light</label>
+            <label class="switch" for="switch-mode">
+              <input type="checkbox" id="switch-mode" (change)="onThemeToggle($event)" [checked]="isDarkMode"/>
+              <span class="slider round"></span>
+            </label>
+            <label class="dark-toogle">Dark</label>
+          </div>
+          <a class="btn btn-success ms-3" href="">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <nav class="btn-mobile d-lg-none" id="nav" [ngClass]="{'open': menuOpen}">
+    <button class="close-menu" id="cerrar" (click)="toggleMenu()">X</button>
+    <ul class="nav-list">
+      <li>
+        <a class="navbar-brand" href="home">BookStore</a>
+      </li>
+      <li>
+        <a class="btn btn-primary" href="quote">Mina Citat</a>
+      </li>
+      <li>
+        <a class="btn btn-primary" href="book-form"><i class="fa-solid fa-book"></i> Lägga till en bok</a>
+      </li>
+      <li>
+        <a class="btn btn-success" href="">Login</a>
+      </li>
+      <li>
+        <a class="btn btn-danger " href="home" (click)="signOut()">Sign Out</a>         
+      </li>
+    </ul>
+  </nav>
+</div>

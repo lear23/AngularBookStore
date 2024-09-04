@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+.dark-mode {
+    background-color: #515050;
+    color: #090909;
+  }
+  
+
+  .dark-mode .navbar {
+    background-color: #333;
+  }
+  
+  .dark-mode .btn-switch .slider {
+    background-color: #888;
+  }
+ .dark-mode .text-form{
+    color:black;
+ }
+ 
